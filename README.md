@@ -1,65 +1,98 @@
-# tree-meh README
+## Summary
 
-This is the README for your extension "tree-meh". After writing up a brief description, we recommend including the following sections.
+The Tree-Meh leverages the tree-node-cli command to swiftly produce and copy string representations of project structures/directories. This enhances collaborative discussions on project architecture and design by providing a convenient way to share and analyze project layouts.
 
-## Features
+## Getting Started
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+1. Install the "Tree-Meh" extension from the Visual Studio Code Marketplace.
 
-For example if there is an image subfolder under your extension project workspace:
+2. Navigate to the Explorer view and right-click on a directory within your project.
 
-\!\[feature X\]\(images/feature-x.png\)
+3. Select "Generate Project Tree" from the context menu.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+4. The extension will generate a tree representation of the directory structure and copy it to your clipboard.
 
-## Requirements
+5. Paste the copied tree wherever you need.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+**Example Output**
+```bash
+my-project
+├── README.md
+├── src
+│   ├── api
+│   │   └── routes.js
+│   ├── app.js
+│   ├── assets
+│   │   └── profile.jpg
+│   └── config.json
+└── tests
+    ├── runTest.js
+    └── suite
+        ├── app.test.js
+        └── index.js
+```
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+Configuration settings coming soon.
 
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
+<!-- ## Known Issues -->
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 1.0.0
 
-Initial release of ...
+Initial release of tree-meh
 
-### 1.0.1
+## Development
 
-Fixed issue #.
+To clone and work on the Tree-Meh extension on your local machine, follow these steps:
 
-### 1.1.0
+1. **Clone the Repository**:
+   Open a terminal and navigate to the directory where you want to clone the extension's repository. Then, run the following command:
 
-Added features X, Y, and Z.
+  ```bash
+  git clone git@github.com:jtroussard/tree-meh.git
+  ```
 
----
+  OR
 
-## Working with Markdown
+   ```bash
+   git clone https://github.com/jtroussard/tree-meh.git
+   ```
 
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
+2. **Navigate to the Extension's Directory**:
+   Change your working directory to the newly cloned repository:
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
+   ```bash
+   cd tree-meh
+   ```
 
-## For more information
+3. **Install Dependencies**:
+   Use npm to install the required dependencies for the extension. Run the following command:
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+   ```bash
+   npm install
+   ```
 
-**Enjoy!**
+   This command will download and install the dependencies mentioned in the `package.json` file.
+
+4. **Start Development**:
+   Now that the dependencies are installed, you can start developing the extension. Open the cloned repository in Visual Studio Code:
+
+   ```bash
+   code .
+   ```
+
+5. **Test**:
+   During development, you might need to test your extension. Use the following command to build the extension:
+
+   ```bash
+   npm test
+   ```
+
+   You can then test your extension within Visual Studio Code by pressing `F5`, make sure your focus is set on the `extensions.js` file.
+
+## LICENSE
+
+This extension is released under the [MIT License](https://github.com/jtroussard/tree-meh/blob/main/LICENSE).
