@@ -12,19 +12,23 @@ function activate(context) {
 
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "tree-meh" is now active!');
+	console.log('Congratulations, your extension Tree-Meh is now active!');
 
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with  registerCommand
 	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('tree-meh.helloWorld', function () {
+	let generateTree = vscode.commands.registerCommand('tree-meh.generateTree', function () {
 		// The code you place here will be executed every time your command is executed
 
 		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from tree-meh!');
+		vscode.window.showInformationMessage('Generating Tree!');
 	});
 
-	context.subscriptions.push(disposable);
+	let generateTreeWithIgnore = vscode.commands.registerCommand('tree-meh.generateTreeWithIgnore', function () {
+		vscode.window.showInformationMessage('Generating Tree! BUT WITH IGNORE!');
+	});
+
+	context.subscriptions.push(generateTree, generateTreeWithIgnore);
 }
 
 // This method is called when your extension is deactivated
