@@ -21,10 +21,6 @@
             "resource": "${resource}"
           }
         ]
-      },
-      {
-        "command": "tree-meh.generateTreeWithIgnore",
-        "title": "Ignore Dependency Directories"
       }
     ],
     "menus": {
@@ -40,11 +36,6 @@
           "command": "tree-meh.generateTree",
           "when": "explorerResourceIsFolder && resourceScheme == 'file' && explorerViewletVisible",
           "group": "navigation@1"
-        },
-        {
-          "command": "tree-meh.generateTreeWithIgnore",
-          "when": "explorerResourceIsFolder && resourceScheme == 'file' && explorerViewletVisible",
-          "group": "navigation@2"
         }
       ]
     },
