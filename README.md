@@ -2,6 +2,8 @@
 
 The Tree-Meh leverages the tree-node-cli command to swiftly produce and copy string representations of project structures/directories. This enhances collaborative discussions on project architecture and design by providing a convenient way to share and analyze project layouts.
 
+<img src="./static/img/feature_everything.gif" alt="gif demo for feature: sub menu action everything" width="75%">
+
 ## Getting Started
 
 1. Install the "Tree-Meh" extension from the Visual Studio Code Marketplace.
