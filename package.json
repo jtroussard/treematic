@@ -15,7 +15,12 @@
     "commands": [
       {
         "command": "tree-meh.generateTree",
-        "title": "Everything"
+        "title": "Everything",
+        "args": [
+          {
+            "resource": "${resource}"
+          }
+        ]
       },
       {
         "command": "tree-meh.generateTreeWithIgnore",
