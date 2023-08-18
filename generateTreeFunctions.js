@@ -9,8 +9,8 @@ const vscode = require('vscode');
  */
 function generateTree(resource) {
     // Make sure the resource argument is valid
-    if (!(resource instanceof vscode.Uri)) {
-        vscode.window.showErrorMessage('Invalid resource for generating trees.');
+    if (!resource) {
+        vscode.window.showErrorMessage('Missing resource for generating trees.');
         return;
     }
 
@@ -37,6 +37,7 @@ function generateTree(resource) {
         return;
     }
     catch (e) {
+        console.log(e);
         vscode.window.showErrorMessage(`Something went wrong: ${e}`);
         return;
     }
