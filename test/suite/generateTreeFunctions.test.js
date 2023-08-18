@@ -2,18 +2,17 @@ const assert = require('assert');
 const sinon = require('sinon');
 const vscode = require('vscode');
 const fs = require('fs');
-const generateTreeFunctions = require('../../generateTreeFunctions.js');
+var proxyquire =  require('proxyquire')
 
 suite('generateTree Command Test Suite', function () {
   let sandbox;
   let mockedUriResource;
   let showInformationMessageSpy;
   let showErrorMessageSpy;
-  let clipboardMock = {
-    writeText: sinon.stub()
-  };
   let existsSyncStub;
-
+  let treeOutputStub = 'predefined tree output';
+  let treeStub = {};
+  let mockClipboardWriteText;
 
   setup(function () {
     sandbox = sinon.createSandbox();
@@ -28,6 +27,7 @@ suite('generateTree Command Test Suite', function () {
     showErrorMessageSpy = sandbox.spy(vscode.window, 'showErrorMessage');
 
     existsSyncStub = sandbox.stub(fs, 'existsSync');
+
   });
 
   teardown(function () {
@@ -35,21 +35,29 @@ suite('generateTree Command Test Suite', function () {
   });
 
   test('Should generate and copy tree to clipboard for valid resource', async function () {
-    const treeOutputStub = 'predefined tree output';
-    const treeStub = sandbox.stub().returns(treeOutputStub);
+    // Mock genreateTreeFunctions and stub dependencies
+    treeOutputStub = 'predefined tree output';
+    treeStub = function () {  return treeOutputStub };
+    // Mock vscode env clipboard
+    mockClipboardWriteText = sandbox.stub();
+    const mockClipboard = { writeText: mockClipboardWriteText };
+    // Use proxyquire - This solved like all my mocking issues
+    const genTreeStub = proxyquire(
+      '../../generateTreeFunctions.js',
+      { 
+        'tree-node-cli': treeStub,
+        'vscode': {
+          'env': {
+            'clipboard': mockClipboard
+          }
+        }
+      });
     existsSyncStub.returns(true);
-    const originalClipboard = vscode.env.clipboard;
-    vscode.env.clipboard = clipboardMock;
 
-    const originalTreeFunction = generateTreeFunctions.tree;
-    generateTreeFunctions.tree = treeStub;
-    await generateTreeFunctions.generateTree(mockedUriResource);
-
+    await genTreeStub.generateTree(mockedUriResource);
+    console.log(`${JSON.stringify(genTreeStub.vscode)}`);
     assert(showInformationMessageSpy.calledOnce);
     assert(showErrorMessageSpy.notCalled);
-    assert(clipboardMock.writeText.calledOnce);
-
-    vscode.env.clipboard = originalClipboard;
-    generateTreeFunctions.tree = originalTreeFunction;
+    assert(mockClipboardWriteText.calledOnce);
   });
 });
