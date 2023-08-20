@@ -1,3 +1,6 @@
+# Publishing files
+*.vsix
+
 # Logs
 logs
 *.log
