@@ -1,9 +1,33 @@
+# Ignore VS Code settings and project files
 .vscode/**
 .vscode-test/**
-test/**
-.gitignore
-.yarnrc
+jsconfig.json
+tsconfig.json
+webpack.config.js
+,gitignore
+.git
+.eslintrc.json
+
+# Ignore development and test-related files
+**/node_modules/**
+**/dist/**
+**/build/**
+**/out/**
+**/test/**
+
+# Ignore documentation
+**/docs/**
+README.md
+CHANGELOG.md
+images/feature_everything.gif
 vsc-extension-quickstart.md
-**/jsconfig.json
-**/*.map
-**/.eslintrc.json
+
+# Ignore all log files and folders
+**/*.log
+logs/**
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+
+# Ignore scripts
+**/scripts/**

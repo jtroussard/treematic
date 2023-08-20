@@ -43,7 +43,7 @@ suite('generateTree Command Test Suite', function () {
     const mockClipboard = { writeText: mockClipboardWriteText };
     // Use proxyquire - This solved like all my mocking issues
     const genTreeStub = proxyquire(
-      '../../generateTreeFunctions.js',
+      '../../src/generateTreeFunctions.js',
       { 
         'tree-node-cli': treeStub,
         'vscode': {
