@@ -1,8 +1,13 @@
+# Tree Meh
+
 ## Summary
 
-The Tree-Meh leverages the tree-node-cli command to swiftly produce and copy string representations of project structures/directories. This enhances collaborative discussions on project architecture and design by providing a convenient way to share and analyze project layouts.
 
-**Example Output**
+The Tree-Meh leverages the tree-node-cli command to swiftly produce and copy string representations of project structures/directories. This enhances collaborative discussions on project architecture and design by providing a convenient way to share and analyze project layouts.  
+
+<img src="https://jtroussard.github.io/static-site/icon.png" alt="plugin logo of a tree">   
+
+### Example Output
 ```bash
 my-project
 ├── README.md
@@ -67,39 +72,29 @@ To clone and work on the Tree-Meh extension on your local machine, follow these 
 1. **Clone the Repository**:
 Open a terminal and navigate to the directory where you want to clone the extension's repository. Then, run the following command:
 
-```bash
-git clone git@github.com:jtroussard/tree-meh.git
-```
+`git clone git@github.com:jtroussard/tree-meh.git`
 
 2. **Navigate to the Extension's Directory**:
 Change your working directory to the newly cloned repository:
 
-```bash
-cd tree-meh
-```
+`cd tree-meh`
 
 3. **Install Dependencies**:
 Use npm to install the required dependencies for the extension. Run the following command:
 
-```bash
-npm install
-```
+`npm install`
 
 This command will download and install the dependencies mentioned in the `package.json` file.
 
 4. **Start Development**:
 Now that the dependencies are installed, you can start developing the extension. Open the cloned repository in Visual Studio Code:
 
-```bash
-code .
-```
+`code .`
 
 5. **Test**:
 During development, you might need to test your extension. Use the following command to build the extension:
 
-```bash
-npm test
-```
+`npm test`
 
 You can then test your extension within Visual Studio Code by pressing `F5`, make sure your focus is set on the `extensions.js` file.
 
