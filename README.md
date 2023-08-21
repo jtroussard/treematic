@@ -59,15 +59,13 @@ Configuration settings coming soon.
 
 ## Release Notes
 
-### 0.0.1
+### 1.0.0
 
-Initial release of tree-meh
+Initial production release of Tree Meh directory tree copy utility.
 
-## Development
+## Development Setup
 
-## Local Setup
-
-To clone and work on the Tree-Meh extension on your local machine, follow these steps:
+To work on the Tree-Meh extension on your local machine, follow these steps:
 
 1. **Clone the Repository**:
 Open a terminal and navigate to the directory where you want to clone the extension's repository. Then, run the following command:
@@ -91,7 +89,8 @@ Now that the dependencies are installed, you can start developing the extension.
 
 `code .`
 
-5. **Test**:
+### Testing
+
 During development, you might need to test your extension. Use the following command to build the extension:
 
 `npm test`
