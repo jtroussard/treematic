@@ -9,7 +9,6 @@ webpack.config.js
 .eslintrc.json
 
 # Ignore development and test-related files
-**/node_modules/**
 **/dist/**
 **/build/**
 **/out/**

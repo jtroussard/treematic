@@ -2,10 +2,7 @@
 
 ## Summary
 
-
 The Tree-Meh leverages the tree-node-cli command to swiftly produce and copy string representations of project structures/directories. This enhances collaborative discussions on project architecture and design by providing a convenient way to share and analyze project layouts.  
-
-<img src="https://jtroussard.github.io/static-site/icon.png" alt="plugin logo of a tree">   
 
 ### Example Output
 ```bash
@@ -27,7 +24,7 @@ my-project
 
 ## Usage
 
-<img src="https://jtroussard.github.io/static-site/http-1692229795084.gif" alt="gif demo for feature: sub menu action everything" width="75%">
+<img src="https://jtroussard.github.io/static-site/http-1692229795084.gif" alt="gif demo for feature: sub menu action everything" width="90%">
 
 1. Install the "Tree-Meh" extension from the Visual Studio Code Marketplace.
 
@@ -59,15 +56,13 @@ Configuration settings coming soon.
 
 ## Release Notes
 
-### 0.0.1
+### 1.0.0
 
-Initial release of tree-meh
+Initial production release of Tree Meh directory tree copy utility.
 
-## Development
+## Development Setup
 
-## Local Setup
-
-To clone and work on the Tree-Meh extension on your local machine, follow these steps:
+To work on the Tree-Meh extension on your local machine, follow these steps:
 
 1. **Clone the Repository**:
 Open a terminal and navigate to the directory where you want to clone the extension's repository. Then, run the following command:
@@ -91,7 +86,8 @@ Now that the dependencies are installed, you can start developing the extension.
 
 `code .`
 
-5. **Test**:
+### Testing
+
 During development, you might need to test your extension. Use the following command to build the extension:
 
 `npm test`

@@ -1,8 +1,8 @@
 {
   "name": "tree-meh",
   "displayName": "Tree Meh Extension",
-  "description": "Adds right click option to copy tree output to clipboard on selected directory from navigation pane.",
-  "version": "0.0.3",
+  "description": "Convenient way to copy directory tree to clipboard. Basically a wrapper around tree-node-cli.",
+  "version": "1.0.0",
   "icon": "images/icon.png",
   "publisher": "DevLife4Me",
   "repository": {
@@ -64,7 +64,8 @@
     "audit": "echo add npm audit to your pipeline when you get around to building the deployment pipeline",
     "patch": "echo add this to your automated pipeline once it is up and running npm version patch",
     "minor": "echo add this to your automated pipeline once it is up and running npm version minor",
-    "major": "echo add this to your automated pipeline once it is up and running npm version major"
+    "major": "echo add this to your automated pipeline once it is up and running npm version major",
+    "publish": "vsce publish"
   },
   "devDependencies": {
     "@types/glob": "^8.1.0",
