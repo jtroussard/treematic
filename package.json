@@ -2,7 +2,7 @@
   "name": "tree-meh",
   "displayName": "Tree Meh Extension",
   "description": "Adds right click option to copy tree output to clipboard on selected directory from navigation pane.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "icon": "images/icon.png",
   "publisher": "jtroussard",
   "repository": {
