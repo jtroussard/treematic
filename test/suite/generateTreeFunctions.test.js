@@ -19,7 +19,7 @@ suite('generateTree Command Test Suite', function () {
 
     // vscode.Uri
     mockedUriResource = {
-      path: 'something',
+      path: '/valid/path',
       options: {}
     };
 
@@ -59,5 +59,40 @@ suite('generateTree Command Test Suite', function () {
     assert(showInformationMessageSpy.calledOnce);
     assert(showErrorMessageSpy.notCalled);
     assert(mockClipboardWriteText.calledOnce);
+  });
+
+  test('Should generate and copy tree less dependency directories to clipboard for valid resource', async function () {
+    // Mock generateTreeLessDependencyDirs and stub dependencies
+    treeOutputStub = 'predefined tree output less dependencies';
+    // eslint-disable-next-line no-unused-vars
+    treeStub = function (_path, _options) {
+      //console.log(`Called with path: ${path} and options:`, options);
+      return treeOutputStub;
+    };
+    
+
+    // Mock vscode env clipboard
+    mockClipboardWriteText = sandbox.stub();
+    const mockClipboard = { writeText: mockClipboardWriteText };
+
+    // Use proxyquire to inject mocks
+    const genTreeLessDependencyDirsStub = proxyquire(
+        '../../src/generateTreeFunctions.js',
+        { 
+          'tree-node-cli': treeStub,
+          'vscode': {
+            'env': {
+              'clipboard': mockClipboard
+            }
+          }
+        });
+
+    existsSyncStub.returns(true);
+
+    await genTreeLessDependencyDirsStub.generateTreeLessDependencyDirs(mockedUriResource);
+    assert(existsSyncStub.calledWith(mockedUriResource.path));
+    assert(showInformationMessageSpy.calledOnceWith('Tree less dependency directories copied to clipboard!'));
+    assert(showErrorMessageSpy.notCalled);
+    assert(mockClipboardWriteText.calledOnceWith(treeOutputStub));
   });
 });
