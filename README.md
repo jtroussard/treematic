@@ -40,13 +40,13 @@ my-project
 
 1. **Generate Tree**: Right-click on any directory in the Explorer and choose "Generate Project Tree" from the context menu. This action triggers the extension to create a visual representation of the directory structure and copies it to your clipboard.
 
-1. New Features Coming Soon
+1. **Generate Tree Less Dependency Directories**: Right-click on any directory in the Explorer and choose "Less Dependency Directories" from the context menu. This action triggers the extension to create a visual representation of the directory structure less the often unecessary and large dependency directories (venv, node_modules, etc.) and copies it to your clipboard.
 
 ## Example Use Cases
 
 - **AI-Assisted Analysis**: Engage with AI assistants like ChatGPT to pitch your refactor or design ideas. Share the tree with AI to get insights, suggestions, and analysis.
 
-- **Documentation After Refactoring**: Whether your project coding convention calls for a project directory representation in the docs or you're maintaining a legacy project, it can be a real pain to update these diagrams by hand. Even if leveraging the terminal command, the process of getting that output from a terminal into a README file can drive anyone bonkers. Now in two clips and a paste you can update the docuemntation seemlessly
+- **Documentation After Refactoring**: Whether your project coding convention calls for a project directory representation in the docs or you're maintaining a legacy project, it can be a real pain to update these diagrams by hand. Even if leveraging the terminal command, the process of getting that output from a terminal into a README file can drive anyone bonkers. Now in two clicks and a paste you can update the docuemntation seemlessly!
 
 ## Extension Settings
 
@@ -55,6 +55,10 @@ Configuration settings coming soon.
 <!-- ## Known Issues -->
 
 ## Release Notes
+
+### 1.1.0
+
+Adds new context option to copy tree less dependency directories. (ex. node_modules/, venv/)
 
 ### 1.0.0
 
