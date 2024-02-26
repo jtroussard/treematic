@@ -43,11 +43,48 @@ function generateTree(resource) {
     }
 }
 
-function generateTreeWithIgnore() {
-    vscode.window.showInformationMessage('Generating Tree! BUT WITH IGNORE!');
+function generateTreeLessDependencyDirs(resource) {
+    // Make sure the resource argument is valid
+    if (!resource) {
+        vscode.window.showErrorMessage('Missing resource for generating trees.');
+        return;
+    }
+
+    // Validate the path string
+    let path = resource.path;
+    if (typeof path !== 'string') {
+        vscode.window.showErrorMessage('Invalid path data type for generating trees.');
+        return;
+    }
+    if (path.length === 0) {
+        vscode.window.showErrorMessage('Invalid path length for generating trees.');
+        return;
+    }
+    if (!fs.existsSync(path)) {
+        vscode.window.showErrorMessage('Invalid path. Path does not exist.');
+        return;
+    };
+
+    // Now that we know the resource is safe we can grab the path and generate the tree
+    try {
+        const options = {
+            allFiles: true,
+            exclude: [/node_modules/, /venv/],
+        };
+        let treeOutput = tree(path, options);
+        vscode.env.clipboard.writeText(treeOutput);
+        vscode.window.showInformationMessage('Tree less dependency directories copied to clipboard!');
+        return;
+    }
+    catch (e) {
+        console.log(e);
+        vscode.window.showErrorMessage(`Something went wrong: ${e}`);
+        return;
+    }
 }
+
 
 module.exports = {
     generateTree,
-    generateTreeWithIgnore
+    generateTreeLessDependencyDirs
 };
