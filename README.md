@@ -56,7 +56,7 @@ Configuration settings coming soon.
 
 ## Release Notes
 
-### 1.1.0
+### 1.1.2
 
 Adds new context option to copy tree less dependency directories. (ex. node_modules/, venv/)
 
