@@ -9,10 +9,10 @@ webpack.config.js
 .eslintrc.json
 
 # Ignore development and test-related files
-**/dist/**
 **/build/**
 **/out/**
 **/test/**
+**/temp/**
 
 # Ignore documentation
 **/docs/**
@@ -30,3 +30,6 @@ logs/**
 
 # Ignore scripts
 **/scripts/**
+
+# Ignore dependencies
+**/node_modules/**
