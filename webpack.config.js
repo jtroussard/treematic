@@ -1,4 +1,5 @@
 const path = require('path');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
   target: 'webworker',
@@ -14,9 +15,14 @@ module.exports = {
     },
     mainFields: ['browser', 'module', 'main'],
   },
-  externals: {
-    child_process: 'require("child_process")',
-    fs: 'require("fs")',
-    vscode: 'commonjs vscode',
-  },
+  externals: [
+    nodeExternals({
+      allowlist: ['tree-node-cli']
+    }),
+    {
+      child_process: 'commonjs child_process',
+      fs: 'commonjs fs',
+      vscode: 'commonjs vscode',
+    }
+  ],
 };
