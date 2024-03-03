@@ -1,6 +1,7 @@
 const tree = require('tree-node-cli');
 const fs = require('fs');
 const vscode = require('vscode');
+const path = require('path');
 
 /**
  * Generates a tree representation of the directory structure and copies it to the clipboard.
@@ -14,24 +15,25 @@ function generateTree(resource) {
         return;
     }
 
+    // Be compatible with windows style paths as well
+    let normalizedPath = path.normalize(resource.path);
     // Validate the path string
-    let path = resource.path;
-    if (typeof path !== 'string') {
-        vscode.window.showErrorMessage('Invalid path data type for generating trees.');
+    if (typeof normalizedPath !== 'string') {
+        vscode.window.showErrorMessage(`Invalid path data type for generating trees: ${typeof normalizedPath}`);
         return;
     }
-    if (path.length === 0) {
-        vscode.window.showErrorMessage('Invalid path length for generating trees.');
+    if (normalizedPath.length === 0) {
+        vscode.window.showErrorMessage(`Invalid path length for generating trees: ${normalizedPath.length}`);
         return;
     }
-    if (!fs.existsSync(path)) {
-        vscode.window.showErrorMessage('Invalid path. Path does not exist.');
+    if (!fs.existsSync(normalizedPath)) {
+        vscode.window.showErrorMessage(`Invalid path. Path does not exist: ${normalizedPath}`, normalizedPath);
         return;
     };
 
     // Now that we know the resource is safe we can grab the path and generate the tree
     try {
-        let treeOutput = tree(path);
+        let treeOutput = tree(normalizedPath);
         vscode.env.clipboard.writeText(treeOutput);
         vscode.window.showInformationMessage('Tree copied to clipboard!');
         return;
@@ -50,18 +52,20 @@ function generateTreeLessDependencyDirs(resource) {
         return;
     }
 
+    // Be compatible with windows style paths as well
+    let normalizedPath = path.normalize(resource.path);
     // Validate the path string
-    let path = resource.path;
-    if (typeof path !== 'string') {
-        vscode.window.showErrorMessage('Invalid path data type for generating trees.');
+    if (typeof normalizedPath !== 'string') {
+        vscode.window.showErrorMessage(`Invalid path data type for generating trees: ${typeof normalizedPath}`);
         return;
     }
-    if (path.length === 0) {
-        vscode.window.showErrorMessage('Invalid path length for generating trees.');
+
+    if (normalizedPath.length === 0) {
+        vscode.window.showErrorMessage(`Invalid path length for generating trees: ${normalizedPath.length}`);
         return;
     }
-    if (!fs.existsSync(path)) {
-        vscode.window.showErrorMessage('Invalid path. Path does not exist.');
+    if (!fs.existsSync(normalizedPath)) {
+        vscode.window.showErrorMessage(`Invalid path. Path does not exist: ${normalizedPath}`, normalizedPath);
         return;
     };
 
@@ -71,7 +75,7 @@ function generateTreeLessDependencyDirs(resource) {
             allFiles: true,
             exclude: [/node_modules/, /venv/],
         };
-        let treeOutput = tree(path, options);
+        let treeOutput = tree(normalizedPath, options);
         vscode.env.clipboard.writeText(treeOutput);
         vscode.window.showInformationMessage('Tree less dependency directories copied to clipboard!');
         return;
