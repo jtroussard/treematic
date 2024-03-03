@@ -16,7 +16,7 @@ function generateTree(resource) {
     }
 
     // Be compatible with windows style paths as well
-    let normalizedPath = path.normalize(resource.path);
+    let normalizedPath = path.normalize(resource.fsPath);
     // Validate the path string
     if (typeof normalizedPath !== 'string') {
         vscode.window.showErrorMessage(`Invalid path data type for generating trees: ${typeof normalizedPath}`);
@@ -53,7 +53,7 @@ function generateTreeLessDependencyDirs(resource) {
     }
 
     // Be compatible with windows style paths as well
-    let normalizedPath = path.normalize(resource.path);
+    let normalizedPath = path.normalize(resource.fsPath);
     // Validate the path string
     if (typeof normalizedPath !== 'string') {
         vscode.window.showErrorMessage(`Invalid path data type for generating trees: ${typeof normalizedPath}`);
