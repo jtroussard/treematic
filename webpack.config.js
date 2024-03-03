@@ -2,7 +2,7 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-  target: 'webworker',
+  target: 'node',
   entry: './src/extension.js',
   output: {
     path: path.resolve(__dirname, 'dist'),

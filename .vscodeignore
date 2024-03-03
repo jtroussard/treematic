@@ -33,3 +33,6 @@ logs/**
 
 # Ignore dependencies
 **/node_modules/**
+
+# Ignore src dir
+src/**
