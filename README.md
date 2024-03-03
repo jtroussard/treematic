@@ -56,7 +56,11 @@ Configuration settings coming soon.
 
 ## Release Notes
 
-### 1.1.2
+### 1.5.0
+
+Windows path compatibility
+
+### 1.2.0
 
 Adds new context option to copy tree less dependency directories. (ex. node_modules/, venv/)
 
