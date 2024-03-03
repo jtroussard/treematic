@@ -19,7 +19,7 @@ suite('generateTree Command Test Suite', function () {
 
     // vscode.Uri
     mockedUriResource = {
-      path: '/valid/path',
+      fsPath: '/valid/path',
       options: {}
     };
 
@@ -90,7 +90,7 @@ suite('generateTree Command Test Suite', function () {
     existsSyncStub.returns(true);
 
     await genTreeLessDependencyDirsStub.generateTreeLessDependencyDirs(mockedUriResource);
-    assert(existsSyncStub.calledWith(mockedUriResource.path));
+    assert(existsSyncStub.calledWith(mockedUriResource.fsPath));
     assert(showInformationMessageSpy.calledOnceWith('Tree less dependency directories copied to clipboard!'));
     assert(showErrorMessageSpy.notCalled);
     assert(mockClipboardWriteText.calledOnceWith(treeOutputStub));
