@@ -26,5 +26,3 @@ jobs:
       with:
         pat: ${{ secrets.VSCE_PERSONAL_ACCESS_TOKEN }}
         registryUrl: https://marketplace.visualstudio.com
-        dryRun: true
-
