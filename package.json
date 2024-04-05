@@ -2,7 +2,7 @@
   "name": "tree-meh",
   "displayName": "Tree Meh Extension",
   "description": "Convenient way to copy directory tree to clipboard. Basically a wrapper around tree-node-cli.",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "icon": "images/icon.png",
   "publisher": "DevLife4Me",
   "repository": {
@@ -100,5 +100,8 @@
     "child_process": "1.0.2",
     "path-browserify": "1.0.1",
     "tree-node-cli": "1.6.0"
+  },
+  "overrides": {
+    "minimist": "^1.2.6"
   }
 }
