@@ -100,5 +100,8 @@
     "child_process": "1.0.2",
     "path-browserify": "1.0.1",
     "tree-node-cli": "1.6.0"
-  }
+  },
+  "overrides": {
+    "minimist": "^1.2.6"
+  }  
 }
