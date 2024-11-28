@@ -6,21 +6,24 @@ const generateTreeFunctions = require('./generateTreeFunctions');
  */
 function activate(context) {
 
-	console.log('Congratulations, your extension Treematic is now active!');
+	console.log('Extension Treematic is now active!');
 
-	// Generates tree with out passing any options to the tree command
+	// Generates tree using the configured options.
 	let generateTree = vscode.commands.registerCommand(
 		'treematic.generateTree',
 		generateTreeFunctions.generateTree
 	);
+	console.log('Generate tree command is registered')
 	
-	// Generates a tree that ignore dependency directories; node_modules and venv
-	let generateTreeLessDependencyDirs = vscode.commands.registerCommand(
-		'treematic.generateTreeLessDependencyDirs',
-		generateTreeFunctions.generateTreeLessDependencyDirs
+	// Generates a tree that includes all directories and all files.
+	let generateTreeEverything = vscode.commands.registerCommand(
+		'treematic.generateTreeEverything',
+		generateTreeFunctions.generateTreeEverything
 	);
+	console.log('Generate tree everything command is registered')
 
-	context.subscriptions.push(generateTree, generateTreeLessDependencyDirs);
+	context.subscriptions.push(generateTree, generateTreeEverything);
+	console.log(`Subscriptions ${context.subscriptions.toString()}`)
 }
 
 function deactivate() { }
