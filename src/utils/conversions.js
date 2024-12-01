@@ -5,9 +5,9 @@
  * @returns {RegExp[]} - Array of RegExp objects.
  */
 function convertToRegex(patterns) {
-    console.log(`converting into RegExp: ${patterns}`);
+    console.debug(`Converting patterns to regex: ${patterns}`);
     const result = patterns.map((pattern) => new RegExp(pattern));
-    console.log(`converted into RegExp: ${result}`);
+    console.debug(`Converted patterns to regex: ${result}`);
     return result;
 }
 

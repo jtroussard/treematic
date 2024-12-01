@@ -1,5 +1,9 @@
 # Treematic
 
+## Pin 
+
+Figure out what's up with everything and config diff with .git/ directory, then finish wiring, then verify locally, then write tests.
+
 ## Summary
 
 The Treematic leverages the tree-node-cli command to swiftly produce and copy string representations of project structures/directories. This enhances collaborative discussions on project architecture and design by providing a convenient way to share and analyze project layouts.  
