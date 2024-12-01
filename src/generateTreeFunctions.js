@@ -59,7 +59,7 @@ function generateTree(resource) {
             dirsOnly: config.get("dirsOnly", false),
             sizes: config.get("sizes", false),
             exclude: convertToRegex(config.get("exclude", [/node_modules\//, /venv\//, /.git\//])),
-            maxDepth: config.get("maxDepth", "Infinity") === "Infinity" ? Number.POSITIVE_INFINITY : config.get("maxDepth"),
+            maxDepth: config.get("maxDepth", -1) === -1 ? Number.POSITIVE_INFINITY : config.get("maxDepth"),
             reverse: config.get("reverse", false),
             trailingSlash: config.get("trailingSlash", false),
             ascii: config.get("ascii", true),

@@ -138,7 +138,7 @@ suite('generateTree Command Test Suite', function () {
 
     assert(mockConfig.get.called, 'get() should be called');
     assert(mockConfig.get.calledWith('allFiles', true), 'get() should be called with key "allFiles" and default value true');
-    assert(mockConfig.get.calledWith('maxDepth', "Infinity"), 'get() should be called with key "maxDepth" and default value -1');
+    assert(mockConfig.get.calledWith('maxDepth', -1), 'get() should be called with key "maxDepth" and default value -1');
     assert(mockConfig.get.calledWith('ascii', true), 'get() should be called with key "ascii" and default value true');
     assert(
       treeStub.calledWithMatch('/valid/path', {
@@ -184,7 +184,7 @@ suite('generateTree Command Test Suite', function () {
       dirsOnly: false,
       sizes: false,
       exclude: sinon.match.array,
-      maxDepth: -1,
+      maxDepth: Number.POSITIVE_INFINITY,
       reverse: false,
       trailingSlash: false,
       ascii: false
