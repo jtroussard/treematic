@@ -1,13 +1,6 @@
 # Treematic
 
-test1
-
-## PIN
-1. update workflow - add coverage check
-2. update workflow - add test runner (or verify at least)
-3. update workflow - add version number validator
-4. new logo
-5. update the market place page
+**Version:** 2.0.0
 
 ## Summary
 
