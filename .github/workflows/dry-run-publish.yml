@@ -36,7 +36,7 @@ jobs:
 
       # Step 6: Run Coverage Check
       - name: Run Coverage Check
-        run: npx c8 --check-coverage --lines 80 --functions 80 --branches 70 npm test
+        run: npm run test:ci
         env:
           DISPLAY: ':99'
 
