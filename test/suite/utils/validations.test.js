@@ -3,7 +3,7 @@ const path = require('path');
 const sinon = require('sinon');
 const vscode = require('vscode');
 const assert = require('assert');
-const { validateResource } = require('../../../src/utils/validations.js'); // Adjust the path as needed
+const { validateResource } = require('../../../src/utils/validations.js');
 
 suite('validateResource', () => {
     let showErrorMessageStub;
@@ -67,6 +67,16 @@ suite('validateResource', () => {
 
     test('should return normalized path if resource is valid', () => {
         const resource = { fsPath: '/valid/path' };
+        const fsExistsStub = sinon.stub(fs, 'existsSync').returns(true);
+
+        const result = validateResource(resource);
+        assert.strictEqual(result, path.normalize('/valid/path'), 'Expected result to be the normalized path');
+        assert.strictEqual(fsExistsStub.calledOnceWith('/valid/path'), true, 'Expected fs.existsSync to be called with correct path');
+        assert.strictEqual(showErrorMessageStub.notCalled, true, 'Expected showErrorMessage not to be called');
+    });
+
+    test('should return normalized path if resource is Windows style path', () => {
+        const resource = { fsPath: '\\valid\\path' };
         const fsExistsStub = sinon.stub(fs, 'existsSync').returns(true);
 
         const result = validateResource(resource);

@@ -1,12 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 const vscode = require('vscode');
+const { normalizeToUnixStyle } = require('./normalizers.js');
 
 /**
  * Validates the resource and returns the normalized path if valid.
  *
  * @param {vscode.Uri} resource - The resource representing the selected directory in the Explorer.
- * @returns {string|null} - The normalized path if valid, otherwise null.
+ * @returns {string|null} - The normalized UNIX-style path if valid, otherwise null.
  */
 function validateResource(resource) {
     console.log('Validating resource...');
@@ -22,7 +23,13 @@ function validateResource(resource) {
         return null;
     }
 
-    const normalizedPath = path.normalize(resource.fsPath);
+    const normalizedPath = normalizeToUnixStyle(resource.fsPath);
+
+    if (!fs.existsSync(normalizedPath)) {
+        console.log(`Path does not exist: ${normalizedPath}`);
+        vscode.window.showErrorMessage(`Invalid path. Path does not exist: ${normalizedPath}`);
+        return null;
+    }
 
     // While writing tests it looks like this conditional check is also covered by
     // the if !resource check before the string is even normalized. Leaving this comment here 
@@ -34,12 +41,6 @@ function validateResource(resource) {
     //     vscode.window.showErrorMessage(`Invalid path length for generating trees: ${normalizedPath.length}`);
     //     return null;
     // }
-
-    if (!fs.existsSync(normalizedPath)) {
-        console.log(`Path does not exist: ${normalizedPath}`);
-        vscode.window.showErrorMessage(`Invalid path. Path does not exist: ${normalizedPath}`);
-        return null;
-    }
 
     return normalizedPath;
 }
