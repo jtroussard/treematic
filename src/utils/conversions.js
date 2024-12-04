@@ -5,10 +5,10 @@
  * @returns {RegExp[]} - Array of RegExp objects.
  */
 function convertToRegex(patterns) {
-    console.debug(`Converting patterns to regex: ${patterns}`);
-    const result = patterns.map((pattern) => new RegExp(pattern));
-    console.debug(`Converted patterns to regex: ${result}`);
-    return result;
+  console.debug(`Converting patterns to regex: ${patterns}`);
+  const result = patterns.map((pattern) => new RegExp(pattern));
+  console.debug(`Converted patterns to regex: ${result}`);
+  return result;
 }
 
 module.exports = { convertToRegex };

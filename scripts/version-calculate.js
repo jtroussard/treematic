@@ -3,7 +3,9 @@ const path = require('path');
 
 const bumpType = process.argv[2]; // 'patch', 'minor', or 'major'
 if (!['patch', 'minor', 'major'].includes(bumpType)) {
-  console.error('Error: Invalid version bump type. Use "patch", "minor", or "major".');
+  console.error(
+    'Error: Invalid version bump type. Use "patch", "minor", or "major".'
+  );
   process.exit(1);
 }
 

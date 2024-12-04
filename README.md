@@ -138,31 +138,19 @@ Treematic provides several configuration options to customize its behavior. Thes
 
 - **Major Update**: Complete overhaul of configuration management with expanded settings for customization.
 - **New Features**:
-  - Added support for generating a full tree (`Generate Tree Everything`) with configurable options.
+  - Default tree generator command now supports configuration options.
+  - Reworked/named (`Generate Tree Everything`) with hard coded configurations to not exclude any files or directories ( _NOTE_ For now the .git/ dir contents are ignored for performance reasons).
   - Enhanced control through new settings such as `maxDepth`, `dirsOnly`, and `reverse`.
-  - ASCII tree output option for improved compatibility and alternative styling.
 - **Improvements**:
-  - Updated commands to respect user-defined configurations in `settings.json`.
+  - Updated default command to respect user-defined configurations in `settings.json`.
   - Clearer documentation and expanded use case examples.
   - Optimized the extension for better performance and usability.
   - Full test coverage (unit tests)
-- **Bug Fixes**: Resolved issues with hidden file handling and Windows path compatibility in earlier versions.
+- **Bug Fixes**: 
+  - Resolved issues with hidden file handling and Windows path compatibility in earlier versions.
+  - Resolved Regex pattern matching for Windows path by normalizing all path strings into UNIX format.
 
-### 1.6.2
-
-DEVELOPER ENHANCEMENT: Adds test and publishing automation
-
-### 1.5.0
-
-Windows path compatibility
-
-### 1.2.0
-
-Adds new context option to copy tree less dependency directories. (ex. node_modules/, venv/)
-
-### 1.0.0
-
-Initial production release of Treematic directory tree copy utility.
+_See_ [`CHANGELOG.md`](CHANGELOG.md) _for historical release details._
 
 ## Development Setup
 

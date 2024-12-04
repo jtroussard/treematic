@@ -2,7 +2,7 @@ const assert = require('assert');
 const sinon = require('sinon');
 const vscode = require('vscode');
 const fs = require('fs');
-var proxyquire = require('proxyquire')
+var proxyquire = require('proxyquire');
 
 const pathToGenerateFunctions = '../../../src/generateTreeFunctions.js';
 suite('generateTree Command Test Suite', function () {
@@ -20,14 +20,16 @@ suite('generateTree Command Test Suite', function () {
 
     mockedUriResource = {
       fsPath: '/valid/path',
-      options: {}
+      options: {},
     };
 
-    showInformationMessageSpy = sandbox.spy(vscode.window, 'showInformationMessage');
+    showInformationMessageSpy = sandbox.spy(
+      vscode.window,
+      'showInformationMessage'
+    );
     showErrorMessageSpy = sandbox.spy(vscode.window, 'showErrorMessage');
 
     existsSyncStub = sandbox.stub(fs, 'existsSync');
-
   });
 
   teardown(function () {
@@ -36,21 +38,21 @@ suite('generateTree Command Test Suite', function () {
 
   test('Should generate and copy tree to clipboard for valid resource', async function () {
     treeOutputStub = 'predefined tree output';
-    treeStub = function () { return treeOutputStub };
+    treeStub = function () {
+      return treeOutputStub;
+    };
 
     mockClipboardWriteText = sandbox.stub();
     const mockClipboard = { writeText: mockClipboardWriteText };
 
-    const genTreeStub = proxyquire(
-      pathToGenerateFunctions,
-      {
-        'tree-node-cli': treeStub,
-        'vscode': {
-          'env': {
-            'clipboard': mockClipboard
-          }
-        }
-      });
+    const genTreeStub = proxyquire(pathToGenerateFunctions, {
+      'tree-node-cli': treeStub,
+      vscode: {
+        env: {
+          clipboard: mockClipboard,
+        },
+      },
+    });
     existsSyncStub.returns(true);
 
     await genTreeStub.generateTree(mockedUriResource);
@@ -67,26 +69,41 @@ suite('generateTree Command Test Suite', function () {
     const mockClipboard = { writeText: mockClipboardWriteText };
 
     const genTreeStub = proxyquire(pathToGenerateFunctions, {
-        'vscode': {
-            'env': {
-                'clipboard': mockClipboard
-            }
-        }, './utils/validations': { validateResource: validateResourceStub }
+      vscode: {
+        env: {
+          clipboard: mockClipboard,
+        },
+      },
+      './utils/validations': { validateResource: validateResourceStub },
     });
 
     try {
-        await genTreeStub.generateTree(invalidUriResource);
-        assert.throws(() => {
-            throw new Error('Whoops');
-        }, Error, 'Whoops');
+      await genTreeStub.generateTree(invalidUriResource);
+      assert.throws(
+        () => {
+          throw new Error('Whoops');
+        },
+        Error,
+        'Whoops'
+      );
     } catch (e) {
-        assert.strictEqual(e.message, 'Invalid resource', 'Error message should match "Invalid resource"');
-        assert.strictEqual(e.name, 'Error', 'Error name should be "Error"');
+      assert.strictEqual(
+        e.message,
+        'Invalid resource',
+        'Error message should match "Invalid resource"'
+      );
+      assert.strictEqual(e.name, 'Error', 'Error name should be "Error"');
     }
 
-    assert(showInformationMessageSpy.notCalled, 'No information message should be shown');
-    assert(mockClipboardWriteText.notCalled, 'Clipboard writeText should not be called');
-});
+    assert(
+      showInformationMessageSpy.notCalled,
+      'No information message should be shown'
+    );
+    assert(
+      mockClipboardWriteText.notCalled,
+      'Clipboard writeText should not be called'
+    );
+  });
 
   test('Should show an error message if an exception occurs', async function () {
     const validateResourceStub = sandbox.stub().returns('/valid/path');
@@ -94,13 +111,18 @@ suite('generateTree Command Test Suite', function () {
 
     const genTreeStub = proxyquire(pathToGenerateFunctions, {
       './utils/validations': { validateResource: validateResourceStub },
-      'tree-node-cli': treeStub
+      'tree-node-cli': treeStub,
     });
 
     await genTreeStub.generateTree(mockedUriResource);
 
     assert(showErrorMessageSpy.calledOnce, 'Error message should be shown');
-    assert(showErrorMessageSpy.calledWithMatch(/Something went wrong: Test exception/), 'Correct error should be shown');
+    assert(
+      showErrorMessageSpy.calledWithMatch(
+        /Something went wrong: Test exception/
+      ),
+      'Correct error should be shown'
+    );
   });
 
   test('Should use custom configuration options for tree generation', async function () {
@@ -109,16 +131,14 @@ suite('generateTree Command Test Suite', function () {
     mockClipboardWriteText = sandbox.stub();
     const mockClipboard = { writeText: mockClipboardWriteText };
 
-    const genTreeStub = proxyquire(
-      pathToGenerateFunctions,
-      {
-        'tree-node-cli': treeStub,
-        'vscode': {
-          'env': {
-            'clipboard': mockClipboard
-          }
-        }
-      });
+    const genTreeStub = proxyquire(pathToGenerateFunctions, {
+      'tree-node-cli': treeStub,
+      vscode: {
+        env: {
+          clipboard: mockClipboard,
+        },
+      },
+    });
     existsSyncStub.returns(true);
 
     const mockConfig = {
@@ -137,9 +157,18 @@ suite('generateTree Command Test Suite', function () {
     await genTreeStub.generateTree(mockedUriResource);
 
     assert(mockConfig.get.called, 'get() should be called');
-    assert(mockConfig.get.calledWith('allFiles', true), 'get() should be called with key "allFiles" and default value true');
-    assert(mockConfig.get.calledWith('maxDepth', -1), 'get() should be called with key "maxDepth" and default value -1');
-    assert(mockConfig.get.calledWith('ascii', true), 'get() should be called with key "ascii" and default value true');
+    assert(
+      mockConfig.get.calledWith('allFiles', true),
+      'get() should be called with key "allFiles" and default value true'
+    );
+    assert(
+      mockConfig.get.calledWith('maxDepth', -1),
+      'get() should be called with key "maxDepth" and default value -1'
+    );
+    assert(
+      mockConfig.get.calledWith('ascii', true),
+      'get() should be called with key "ascii" and default value true'
+    );
     assert(
       treeStub.calledWithMatch('/valid/path', {
         allFiles: false,
@@ -158,13 +187,19 @@ suite('generateTree Command Test Suite', function () {
     const genTreeStub = proxyquire(pathToGenerateFunctions, {
       'tree-node-cli': treeStub,
       './utils/validations': { validateResource: validateResourceStub },
-      'vscode': { env: { clipboard: mockClipboard } }
+      vscode: { env: { clipboard: mockClipboard } },
     });
 
     await genTreeStub.generateTree(mockedUriResource);
 
-    assert(mockClipboard.writeText.calledOnce, 'Clipboard writeText should be called');
-    assert(mockClipboard.writeText.calledWith('sample tree output'), 'Correct tree output should be written to clipboard');
+    assert(
+      mockClipboard.writeText.calledOnce,
+      'Clipboard writeText should be called'
+    );
+    assert(
+      mockClipboard.writeText.calledWith('sample tree output'),
+      'Correct tree output should be written to clipboard'
+    );
   });
 
   test('Should pass correct default options to tree-node-cli', async function () {
@@ -178,16 +213,19 @@ suite('generateTree Command Test Suite', function () {
     await genTreeStub.generateTree(mockedUriResource);
 
     assert(treeStub.calledOnce, 'Tree generation should be called');
-    assert(treeStub.calledWithMatch('/valid/path', {
-      allFiles: true,
-      dirsFirst: false,
-      dirsOnly: false,
-      sizes: false,
-      exclude: sinon.match.array,
-      maxDepth: Number.POSITIVE_INFINITY,
-      reverse: false,
-      trailingSlash: false,
-      ascii: false
-    }), 'Default options should be passed to tree-node-cli');
+    assert(
+      treeStub.calledWithMatch('/valid/path', {
+        allFiles: true,
+        dirsFirst: false,
+        dirsOnly: false,
+        sizes: false,
+        exclude: sinon.match.array,
+        maxDepth: Number.POSITIVE_INFINITY,
+        reverse: false,
+        trailingSlash: false,
+        ascii: false,
+      }),
+      'Default options should be passed to tree-node-cli'
+    );
   });
 });

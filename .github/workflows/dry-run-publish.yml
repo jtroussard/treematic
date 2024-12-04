@@ -45,7 +45,7 @@ jobs:
 
       - name: Package Extension
         run: npx vsce package
-      
+
       - name: Validate VSIX Package
         run: |
           if [ ! -f *.vsix ]; then

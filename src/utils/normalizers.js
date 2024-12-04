@@ -5,7 +5,7 @@
  * @returns {string} - The normalized path in UNIX style.
  */
 function normalizeToUnixStyle(path) {
-    return path.replace(/\\/g, '/');
+  return path.replace(/\\/g, '/');
 }
 
 module.exports = { normalizeToUnixStyle };
