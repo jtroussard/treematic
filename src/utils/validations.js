@@ -10,15 +10,14 @@ const { normalizeToUnixStyle } = require('./normalizers.js');
  * @returns {string|null} - The normalized UNIX-style path if valid, otherwise null.
  */
 function validateResource(resource) {
-    console.log('Validating resource...');
     if (!resource) {
-        console.log('Resource is null');
+        console.error('Resource is null');
         vscode.window.showErrorMessage('Missing resource for generating trees.');
         return null;
     }
 
     if (typeof resource.fsPath !== 'string') {
-        console.log(`Invalid path data type: ${typeof resource.fsPath}`);
+        console.error(`Invalid path data type: ${typeof resource.fsPath}`);
         vscode.window.showErrorMessage(`Invalid path data type for generating trees: ${typeof resource.fsPath}`);
         return null;
     }
@@ -26,7 +25,7 @@ function validateResource(resource) {
     const normalizedPath = normalizeToUnixStyle(resource.fsPath);
 
     if (!fs.existsSync(normalizedPath)) {
-        console.log(`Path does not exist: ${normalizedPath}`);
+        console.error(`Path does not exist: ${normalizedPath}`);
         vscode.window.showErrorMessage(`Invalid path. Path does not exist: ${normalizedPath}`);
         return null;
     }

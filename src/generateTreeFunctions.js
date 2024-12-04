@@ -7,7 +7,7 @@ const { validateResource } = require('./utils/validations');
 const { convertToRegex } = require('./utils/conversions');
 
 function generateTreeEverything(resource) {
-    console.info('Generating everything tree...');
+    console.debug('generateTreeEverything method invoked...');
     try {
         const normalizedPath = validateResource(resource);
         if (!normalizedPath) {
@@ -32,8 +32,8 @@ function generateTreeEverything(resource) {
         );
 
         vscode.env.clipboard.writeText(treeOutput);
-        vscode.window.showInformationMessage('Entire project tree copied to clipboard!');
-        console.info('Tree generatred successfully!');
+        vscode.window.showInformationMessage('Generated tree copied to clipboard!');
+        console.debug('Tree generatred successfully!');
         return;
     } catch (e) {
         vscode.window.showErrorMessage(`Something went wrong: ${e.message}`);
@@ -42,7 +42,7 @@ function generateTreeEverything(resource) {
 }
 
 function generateTree(resource) {
-    console.info('Generating tree...');
+    console.debug('generateTree method invoked...');
     try {
         const normalizedPath = validateResource(resource);
         if (!normalizedPath) {
@@ -64,13 +64,12 @@ function generateTree(resource) {
             trailingSlash: config.get("trailingSlash", false),
             ascii: config.get("ascii", true),
         };
-        console.info(`Tree options loaded: ${JSON.stringify(treeOptions)}`);
 
         let treeOutput = tree(normalizedPath, treeOptions);
         
         vscode.env.clipboard.writeText(treeOutput);
-        vscode.window.showInformationMessage('Project tree copied to clipboard!');
-        console.info('Tree generatred successfully!');
+        vscode.window.showInformationMessage('Generated tree copied to clipboard!');
+        console.debug('Tree generatred successfully!');
         return;
     } catch (e) {
         vscode.window.showErrorMessage(`Something went wrong: ${e.message}`);

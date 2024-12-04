@@ -7,8 +7,6 @@ const generateTreeFunctions = require('./generateTreeFunctions');
  * @param {vscode.ExtensionContext} context - The context for the extension, containing subscriptions and other information.
  */
 function activate(context) {
-    console.log('Extension Treematic is now active!');
-
     // Define the commands to register
     const commands = [
         {
@@ -25,11 +23,11 @@ function activate(context) {
     commands.forEach(({ name, func }) => {
         const command = vscode.commands.registerCommand(name, func);
         context.subscriptions.push(command);
-        console.log(`${name} command is registered`);
+        console.debug(`${name} command is registered`);
     });
 
     // Log the current subscriptions for debugging purposes
-    console.log(`Subscriptions ${context.subscriptions.toString()}`);
+    console.debug(`Subscriptions ${context.subscriptions.toString()}`);
 }
 
 function deactivate() { }
