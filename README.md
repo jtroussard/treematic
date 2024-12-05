@@ -27,8 +27,6 @@ my-project
 
 ## Usage
 
-<img src="https://jtroussard.github.io/static-site/http-1692229795084.gif" alt="gif demo for feature: sub menu action everything" width="90%">
-
 1. Install the "Treematic" extension from the Visual Studio Code Marketplace.
 
 2. Navigate to the Explorer view and right-click on a directory within your project.
@@ -38,6 +36,8 @@ my-project
 4. The extension will generate a tree representation of the directory structure based on the selected option and copy it to your clipboard.
 
 5. Paste the copied tree wherever you need.
+
+<img src="https://jtroussard.github.io/static-site/002.gif" alt="gif demo" width="90%">
 
 ## Features
 
