@@ -4,7 +4,7 @@
 
 ## Summary
 
-The Treematic leverages the tree-node-cli command to swiftly produce and copy string representations of project structures/directories. This enhances collaborative discussions on project architecture and design by providing a convenient way to share and analyze project layouts.
+Treematic leverages the `tree-node-cli` library to quickly produce and copy string representations of project structures/directories. This enhances documentation, analysis, and presentations by providing a simple yet infomative visual aid.
 
 ### Example Output
 
@@ -139,7 +139,7 @@ Treematic provides several configuration options to customize its behavior. Thes
 - **Major Update**: Complete overhaul of configuration management with expanded settings for customization.
 - **New Features**:
   - Default tree generator command now supports configuration options.
-  - Reworked/named (`Generate Tree Everything`) with hard coded configurations to not exclude any files or directories ( _NOTE_ For now the .git/ dir contents are ignored for performance reasons).
+  - Reworked/named (`Generate Tree Everything`) with hard-coded configurations to not exclude any files or directories ( _NOTE_ For now the .git/ dir contents are ignored for performance reasons).
   - Enhanced control through new settings such as `maxDepth`, `dirsOnly`, and `reverse`.
 - **Improvements**:
   - Updated default command to respect user-defined configurations in `settings.json`.
@@ -190,7 +190,7 @@ You can then test your extension within Visual Studio Code by pressing `F5`, mak
 
 - **Monitor `tree-node-cli` Updates**: A potential release of `tree-node-cli` is expected to modify the Node.js configuration API. While the dependency is currently pinned to version `1.6.0`, updates will be evaluated and integrated once stable.
 
-- **Enhanced Tree Customization**: Add a custom configuration to control output: Text, Markdown, ... possibily some format that allows for color coding of the output.
+- **Enhanced Tree Customization**: Add a custom configuration to control output: Text, Markdown, ... possibly some format that allows for color coding of the output.
 
 - **VS Code Integration Improvements**: Explore integration with VS Code's inline settings menu, allowing users to configure tree generation options directly from the UI.
 

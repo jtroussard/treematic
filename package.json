@@ -1,6 +1,6 @@
 {
-  "name": "treematic",
-  "displayName": "Treematic Extension",
+  "name": "tree-meh",
+  "displayName": "Treematic: Project Tree Generator",
   "description": "Convenient way to copy directory tree to clipboard. Basically a wrapper around tree-node-cli.",
   "version": "2.0.0",
   "icon": "images/icon.png",
