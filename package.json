@@ -110,7 +110,8 @@
             "Thumbs.db",
             "__pycache__/",
             "temp/",
-            "cache/"
+            "cache/",
+            ".vscode-test/"
           ],
           "description": "List of Regular Expressions that match files and directories to be excluded from the tree. To exclude files under a directory and keep the directory itself be sure to include the trailing slash in the RegEx."
         },
