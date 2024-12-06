@@ -2,30 +2,37 @@ const vscode = require('vscode');
 const generateTreeFunctions = require('./generateTreeFunctions');
 
 /**
- * @param {vscode.ExtensionContext} context
+ * Activates the Treematic extension by registering its commands.
+ *
+ * @param {vscode.ExtensionContext} context - The context for the extension, containing subscriptions and other information.
  */
 function activate(context) {
+  // Define the commands to register
+  const commands = [
+    {
+      name: 'treematic.generateTree',
+      func: generateTreeFunctions.generateTree,
+    },
+    {
+      name: 'treematic.generateTreeEverything',
+      func: generateTreeFunctions.generateTreeEverything,
+    },
+  ];
 
-	console.log('Congratulations, your extension Tree-Meh is now active!');
+  // Register each command and add to the context's subscriptions
+  commands.forEach(({ name, func }) => {
+    const command = vscode.commands.registerCommand(name, func);
+    context.subscriptions.push(command);
+    console.debug(`${name} command is registered`);
+  });
 
-	// Generates tree with out passing any options to the tree command
-	let generateTree = vscode.commands.registerCommand(
-		'tree-meh.generateTree',
-		generateTreeFunctions.generateTree
-	);
-	
-	// Generates a tree that ignore dependency directories; node_modules and venv
-	let generateTreeLessDependencyDirs = vscode.commands.registerCommand(
-		'tree-meh.generateTreeLessDependencyDirs',
-		generateTreeFunctions.generateTreeLessDependencyDirs
-	);
-
-	context.subscriptions.push(generateTree, generateTreeLessDependencyDirs);
+  // Log the current subscriptions for debugging purposes
+  console.debug(`Subscriptions ${context.subscriptions.toString()}`);
 }
 
-function deactivate() { }
+function deactivate() {}
 
 module.exports = {
-	activate,
-	deactivate
-}
+  activate,
+  deactivate,
+};

@@ -2,7 +2,7 @@ name: Dry Run Publish
 
 on:
   pull_request:
-    branches: [main, workflow-testing]
+    branches: [workflow-testing]
 
 jobs:
   dry-run-publish:
@@ -19,8 +19,23 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Run Tests and Check Coverage
-        run: npm run coverage
+      - name: Install XVFB
+        run: sudo apt-get update && sudo apt-get install -y xvfb
+
+      - name: Start XVFB
+        run: Xvfb :99 -screen 0 1280x1024x24 &
+        env:
+          DISPLAY: ':99'
+
+      - name: Run Tests
+        run: npm test
+        env:
+          DISPLAY: ':99'
+
+      - name: Run Coverage Check
+        run: npm run test:ci
+        env:
+          DISPLAY: ':99'
 
       - name: Build Extension
         run: npm run build
