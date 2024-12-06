@@ -32,15 +32,9 @@ jobs:
         env:
           DISPLAY: ':99'
 
-      # Step 5: Run Tests
-      - name: Run Tests
-        run: npm test
-        env:
-          DISPLAY: ':99'
-
-      # Step 6: Run Coverage Check
+      # Step 6: Run Tests and Coverage Check
       - name: Run Coverage Check
-        run: npx c8 --check-coverage --lines 80 --functions 80 --branches 70 npm test
+        run: npm run test:ci
         env:
           DISPLAY: ':99'
 
