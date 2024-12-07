@@ -200,7 +200,7 @@ You can then test your extension within Visual Studio Code by pressing `F5`, mak
 
 Treematic leverages the `tree-node-cli` library to generate directory tree representations. For more information, you can explore the library's documentation:
 
-- **tree-node-cli GitHub Repository**: [https://github.com/shime/tree-cli](https://github.com/shime/tree-cli)
+- **tree-node-cli GitHub Repository**: [https://github.com/yangshun/tree-node-cli](https://github.com/yangshun/tree-node-cli)
 - **tree-node-cli npm Package**: [https://www.npmjs.com/package/tree-node-cli](https://www.npmjs.com/package/tree-node-cli)
 
 This library serves as the core for generating the directory structure, ensuring reliable and consistent output for your projects.
