@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed 
 
 - Bump minimatch and vscode #74
-
+- Broken link in README.md
 
 ## [2.0.0] - 2024-12-02
 
