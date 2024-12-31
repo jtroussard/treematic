@@ -145,7 +145,7 @@ suite('generateTree Command Test Suite', function () {
       get: sandbox.stub().callsFake((key, defaultValue) => {
         const customConfig = {
           allFiles: false,
-          maxDepth: 2,
+          maxDepth: 12,
           ascii: false,
         };
         return customConfig[key] ?? defaultValue;
@@ -172,7 +172,7 @@ suite('generateTree Command Test Suite', function () {
     assert(
       treeStub.calledWithMatch('/valid/path', {
         allFiles: false,
-        maxDepth: 2,
+        maxDepth: 12,
         ascii: false,
       }),
       'Custom config should be used'

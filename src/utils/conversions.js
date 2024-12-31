@@ -8,7 +8,7 @@ function convertToRegex(patterns) {
   console.debug(`Converting patterns to regex: ${patterns}`);
   const result = patterns.map((pattern) => {
     // Replace slashes with a regex group that matches both '/' and '\\'
-    const crossPlatformPattern = pattern.replace(/\//g, '(\\\\|/)');
+    const crossPlatformPattern = pattern.replace(/\//g, '(\\\\|\/)');
     return new RegExp(crossPlatformPattern);
   });
   console.debug(`Converted patterns to regex: ${result}`);
