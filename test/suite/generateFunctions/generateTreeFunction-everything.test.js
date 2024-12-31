@@ -127,7 +127,7 @@ suite('generateTreeEverything Command Test Suite', function () {
         dirsFirst: false,
         dirsOnly: false,
         sizes: false,
-        exclude: [/.git\//],
+        exclude: ['/.git\//'],
         maxDepth: Number.POSITIVE_INFINITY,
         reverse: false,
         trailingSlash: false,

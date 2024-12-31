@@ -1,3 +1,20 @@
+/**
+ * Usage:
+ * This script calculates the next version based on the bump type (`patch`, `minor`, or `major`).
+ * 
+ * Run the script with the bump type as an argument:
+ * 
+ * Example:
+ *   node scripts/version-calculate.js patch
+ * 
+ * Output:
+ * - Logs the next version number to the console (e.g., "1.2.4").
+ * - Used as input for `version-bump.js`.
+ * 
+ * Ensure that:
+ * - `package.json` exists in the root directory and contains a valid "version" field.
+ * - The bump type is one of: "patch", "minor", or "major".
+ */
 const fs = require('fs');
 const path = require('path');
 

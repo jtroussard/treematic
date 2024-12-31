@@ -1,3 +1,23 @@
+/**
+ * Usage:
+ * This script updates the version number in `package.json`, `README.md`, and `CHANGELOG.md`.
+ * 
+ * Run the script with a new version number as an argument:
+ * 
+ * Example:
+ *   node scripts/version-bump.js 1.2.3
+ * 
+ * This will:
+ * - Update the version in `package.json` under the "version" field.
+ * - Update the version in `README.md` if it includes a version declaration.
+ * - Add or update the entry for the new version in `CHANGELOG.md`.
+ * 
+ * Ensure that:
+ * - The new version number follows semantic versioning (e.g., "major.minor.patch").
+ * - You have write permissions for the affected files.
+ */
+
+// TODO again another weird thing I thought I full verified is not working, version number is being passed as the semantic word not the actual calculated version number.
 const fs = require('fs');
 const path = require('path');
 

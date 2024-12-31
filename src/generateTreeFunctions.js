@@ -21,7 +21,7 @@ function generateTreeEverything(resource) {
       dirsFirst: false,
       dirsOnly: false,
       sizes: false,
-      exclude: [/.git\//], // perf issues, ignoring git/
+      exclude: ['/.git\//'], // perf issues, ignoring git/
       maxDepth: Number.POSITIVE_INFINITY,
       reverse: false,
       trailingSlash: false,
@@ -50,22 +50,27 @@ function generateTree(resource) {
 
     // Process options to match tree-node-cli options contract.
     const config = vscode.workspace.getConfiguration('treematic');
+    // console.log(`TUNA TUNA ${config.get('allFiles')}`)
+    // console.log(`TUNA TUNA ${config.get('dirsFirst')}`)
+    // console.log(`TUNA TUNA ${config.get('sizes')}`)
+    // console.log(`TUNA TUNA ${config.get('maxDepth')}`)
     const treeOptions = {
       allFiles: config.get('allFiles', true),
       dirsFirst: config.get('dirsFirst', false),
       dirsOnly: config.get('dirsOnly', false),
       sizes: config.get('sizes', false),
       exclude: convertToRegex(
-        config.get('exclude', [/node_modules\//, /venv\//, /.git\//])
+        config.get('exclude', ['/node_modules\//', '/venv\//', '/.git\//'])
       ),
       maxDepth:
         config.get('maxDepth', -1) === -1
           ? Number.POSITIVE_INFINITY
-          : config.get('maxDepth'),
+          : config.get('maxDepth', -1),
       reverse: config.get('reverse', false),
       trailingSlash: config.get('trailingSlash', false),
       ascii: config.get('ascii', true),
     };
+    // console.log(`TUNA TUNA depth after${config.get('maxDepth')}`)
 
     let treeOutput = tree(normalizedPath, treeOptions);
 
