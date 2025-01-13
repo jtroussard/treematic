@@ -7,7 +7,6 @@ const generateTreeFunctions = require('./generateTreeFunctions');
  * @param {vscode.ExtensionContext} context - The context for the extension, containing subscriptions and other information.
  */
 function activate(context) {
-  // Define the commands to register
   const commands = [
     {
       name: 'treematic.generateTree',
