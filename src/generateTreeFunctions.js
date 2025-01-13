@@ -50,10 +50,6 @@ function generateTree(resource) {
 
     // Process options to match tree-node-cli options contract.
     const config = vscode.workspace.getConfiguration('treematic');
-    // console.log(`TUNA TUNA ${config.get('allFiles')}`)
-    // console.log(`TUNA TUNA ${config.get('dirsFirst')}`)
-    // console.log(`TUNA TUNA ${config.get('sizes')}`)
-    // console.log(`TUNA TUNA ${config.get('maxDepth')}`)
     const treeOptions = {
       allFiles: config.get('allFiles', true),
       dirsFirst: config.get('dirsFirst', false),
@@ -70,7 +66,6 @@ function generateTree(resource) {
       trailingSlash: config.get('trailingSlash', false),
       ascii: config.get('ascii', true),
     };
-    // console.log(`TUNA TUNA depth after${config.get('maxDepth')}`)
 
     let treeOutput = tree(normalizedPath, treeOptions);
 

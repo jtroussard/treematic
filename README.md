@@ -1,6 +1,6 @@
 # Treematic
 
-**Version:** 2.0.1
+**Version:** 2.0.2
 
 ## Summary
 
@@ -87,6 +87,7 @@ Treematic provides several configuration options to customize its behavior. Thes
 
   - **Type**: `array` of `string`
   - **Default**:
+
     ```json
     [
       "node_modules/",
@@ -102,9 +103,15 @@ Treematic provides several configuration options to customize its behavior. Thes
       "Thumbs.db",
       "__pycache__/",
       "temp/",
-      "cache/"
+      "cache/",
+      ".vscode-test/",
+      "venv/",
+      "env/",
+      "virtualenv/",
+      ".venv/"
     ]
     ```
+
   - **Description**: A list of regular expressions defining files and directories to exclude from the tree output. To exclude files inside a directory while keeping the directory itself, include a trailing slash in the regex.
 
 - **`treematic.maxDepth`**
@@ -146,7 +153,7 @@ Treematic provides several configuration options to customize its behavior. Thes
   - Clearer documentation and expanded use case examples.
   - Optimized the extension for better performance and usability.
   - Full test coverage (unit tests)
-- **Bug Fixes**: 
+- **Bug Fixes**:
   - Resolved issues with hidden file handling and Windows path compatibility in earlier versions.
   - Resolved Regex pattern matching for Windows path by normalizing all path strings into UNIX format.
 
@@ -200,7 +207,7 @@ You can then test your extension within Visual Studio Code by pressing `F5`, mak
 
 Treematic leverages the `tree-node-cli` library to generate directory tree representations. For more information, you can explore the library's documentation:
 
-- **tree-node-cli GitHub Repository**: [https://github.com/shime/tree-cli](https://github.com/shime/tree-cli)
+- **tree-node-cli GitHub Repository**: [https://github.com/yangshun/tree-node-cli](https://github.com/yangshun/tree-node-cli)
 - **tree-node-cli npm Package**: [https://www.npmjs.com/package/tree-node-cli](https://www.npmjs.com/package/tree-node-cli)
 
 This library serves as the core for generating the directory structure, ensuring reliable and consistent output for your projects.
