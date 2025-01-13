@@ -8,26 +8,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
-## [2.0.2] - 2025-01-13
-
-### Added
-
-- Adds TODO for future script enhancements.
-
-### Changed
-
-- Updated ignore defaults.
-
 ## [2.0.1] - 2024-12-31
 
 ### Fixed
 
 - Updated regex converter to apply alternative to cover window paths when filtering.
+
+
+### Added
+### Changed
+### Fixed 
+
 - Bump minimatch and vscode #74
 
-### Removed
-
-- Removed console logs.
 
 ## [2.0.0] - 2024-12-02
 

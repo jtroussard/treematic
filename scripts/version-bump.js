@@ -114,8 +114,6 @@ const updateChangelog = (filePath, version) => {
   return true; // Changes were made
 };
 
-// TODO update lock file to directly to save on the npm i at the end og the npm script
-
 // Update package.json
 const packageJsonUpdated = updateFileVersion(
   packageJsonPath,

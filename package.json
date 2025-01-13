@@ -2,7 +2,7 @@
   "name": "tree-meh",
   "displayName": "Treematic: Project Tree Generator",
   "description": "Convenient way to copy directory tree to clipboard. Basically a wrapper around tree-node-cli.",
-  "version": "2.0.2",
+  "version": "2.0.1",
   "icon": "images/icon.png",
   "publisher": "DevLife4Me",
   "repository": {
@@ -111,11 +111,7 @@
             "__pycache__/",
             "temp/",
             "cache/",
-            ".vscode-test/",
-            "venv/",
-            "env/",
-            "virtualenv/",
-            ".venv/"
+            ".vscode-test/"
           ],
           "description": "List of Regular Expressions that match files and directories to be excluded from the tree. To exclude files under a directory and keep the directory itself be sure to include the trailing slash in the RegEx."
         },
@@ -152,9 +148,9 @@
     "coverage:stress": "c8 --check-coverage --check-coverage --lines 100 --functions 100 --branches 100 --reporter=html --reporter=text npm run test",
     "help": "webpack --help",
     "audit": "echo add npm audit to your pipeline when you get around to building the deployment pipeline",
-    "patch": "node ./scripts/version-calculate.js patch | xargs -I {} node ./scripts/version-bump.js {} && npm i",
-    "minor": "node ./scripts/version-calculate.js minor | xargs -I {} node ./scripts/version-bump.js {} && npm i",
-    "major": "node ./scripts/version-calculate.js major | xargs -I {} node ./scripts/version-bump.js {} && npm i",
+    "patch": "node ./scripts/version-calculate.js patch | xargs -I {} node ./scripts/version-bump.js {}",
+    "minor": "node ./scripts/version-calculate.js minor | xargs -I {} node ./scripts/version-bump.js {}",
+    "major": "node ./scripts/version-calculate.js major | xargs -I {} node ./scripts/version-bump.js {}",
     "publish": "vsce publish",
     "lint": "prettier --write .",
     "lint:check": "prettier --check ."
