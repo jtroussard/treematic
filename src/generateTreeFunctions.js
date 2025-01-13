@@ -21,7 +21,7 @@ function generateTreeEverything(resource) {
       dirsFirst: false,
       dirsOnly: false,
       sizes: false,
-      exclude: ['/.git\//'], // perf issues, ignoring git/
+      exclude: convertToRegex(['/.git\//']),
       maxDepth: Number.POSITIVE_INFINITY,
       reverse: false,
       trailingSlash: false,

@@ -3,6 +3,7 @@ const sinon = require('sinon');
 const vscode = require('vscode');
 const fs = require('fs');
 var proxyquire = require('proxyquire');
+const { convertToRegex } = require('../../../src/utils/conversions');
 
 const pathToGenerateFunctions = '../../../src/generateTreeFunctions.js';
 suite('generateTreeEverything Command Test Suite', function () {
@@ -127,7 +128,7 @@ suite('generateTreeEverything Command Test Suite', function () {
         dirsFirst: false,
         dirsOnly: false,
         sizes: false,
-        exclude: ['/.git\//'],
+        exclude: convertToRegex(['/.git\//']),
         maxDepth: Number.POSITIVE_INFINITY,
         reverse: false,
         trailingSlash: false,
