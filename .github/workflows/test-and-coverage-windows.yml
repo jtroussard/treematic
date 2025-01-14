@@ -1,8 +1,8 @@
 name: Test and Coverage Windows
 
 on:
-  release:
-    types: [published]
+  pull_request:
+    branches: [release, main, wip]
   workflow_dispatch:
 
 jobs:
@@ -22,7 +22,7 @@ jobs:
       - name: Install Xvfb Equivalent (Headless GUI) - Skipped
         run: echo "XVFB not required on Windows"
 
-      - name: Run Coverage Check
+      - name: Run Tests and Coverage Report
         run: npm run test:ci
 
       - name: Upload Test Results

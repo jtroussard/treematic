@@ -189,13 +189,14 @@ This command will download and install the dependencies mentioned in the `packag
 
 During development, you might need to test your extension. Use the following command to build the extension:
 
-`npm test`
+`npm run build` or `npm run build-dev`
 
 You can then test your extension within Visual Studio Code by pressing `F5`, make sure your focus is set on the `extensions.js` file.
 
 ## What's Next?
 
 - **Monitor `tree-node-cli` Updates**: A potential release of `tree-node-cli` is expected to modify the Node.js configuration API. While the dependency is currently pinned to version `1.6.0`, updates will be evaluated and integrated once stable.
+  - **Write Native Tree Generation Module**: Under consideration, to allow more flexibility with core extension logic, specifically the exclude parsing logic.
 
 - **Enhanced Tree Customization**: Add a custom configuration to control output: Text, Markdown, ... possibly some format that allows for color coding of the output.
 

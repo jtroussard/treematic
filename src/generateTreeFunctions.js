@@ -2,9 +2,11 @@ const tree = require('tree-node-cli');
 const fs = require('fs');
 const vscode = require('vscode');
 const path = require('path');
+const os = require('os').platform();
 
 const { validateResource } = require('./utils/validations');
 const { convertToRegex } = require('./utils/conversions');
+const { getSafeSizesOption } = require('./utils/platformUtils');
 
 function generateTreeEverything(resource) {
   console.debug('generateTreeEverything method invoked...');
@@ -54,7 +56,7 @@ function generateTree(resource) {
       allFiles: config.get('allFiles', true),
       dirsFirst: config.get('dirsFirst', false),
       dirsOnly: config.get('dirsOnly', false),
-      sizes: config.get('sizes', false),
+      sizes: getSafeSizesOption(config),
       exclude: convertToRegex(
         config.get('exclude', ['/node_modules\//', '/venv\//', '/.git\//'])
       ),
@@ -67,11 +69,10 @@ function generateTree(resource) {
       ascii: config.get('ascii', true),
     };
 
-    let treeOutput = tree(normalizedPath, treeOptions);
-
+    treeOutput = tree(normalizedPath, treeOptions);
     vscode.env.clipboard.writeText(treeOutput);
     vscode.window.showInformationMessage('Generated tree copied to clipboard!');
-    console.debug('Tree generatred successfully!');
+    console.debug('Tree generated successfully!');
     return;
   } catch (e) {
     vscode.window.showErrorMessage(`Something went wrong: ${e.message}`);
