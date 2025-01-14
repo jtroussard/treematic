@@ -3,6 +3,7 @@ const sinon = require('sinon');
 const vscode = require('vscode');
 const fs = require('fs');
 var proxyquire = require('proxyquire');
+const { getSafeSizesOption } = require('../../../src/utils/platformUtils');
 
 const pathToGenerateFunctions = '../../../src/generateTreeFunctions.js';
 suite('generateTree Command Test Suite', function () {
@@ -28,8 +29,8 @@ suite('generateTree Command Test Suite', function () {
       'showInformationMessage'
     );
     showErrorMessageSpy = sandbox.spy(vscode.window, 'showErrorMessage');
-
     existsSyncStub = sandbox.stub(fs, 'existsSync');
+    getSafeSizesOptionStub = sandbox.stub().returns(false);
   });
 
   teardown(function () {
@@ -47,11 +48,8 @@ suite('generateTree Command Test Suite', function () {
 
     const genTreeStub = proxyquire(pathToGenerateFunctions, {
       'tree-node-cli': treeStub,
-      vscode: {
-        env: {
-          clipboard: mockClipboard,
-        },
-      },
+      vscode: { env: { clipboard: mockClipboard } },
+      './utils/platformUtils': { getSafeSizesOption: getSafeSizesOptionStub },
     });
     existsSyncStub.returns(true);
 
@@ -69,12 +67,9 @@ suite('generateTree Command Test Suite', function () {
     const mockClipboard = { writeText: mockClipboardWriteText };
 
     const genTreeStub = proxyquire(pathToGenerateFunctions, {
-      vscode: {
-        env: {
-          clipboard: mockClipboard,
-        },
-      },
+      vscode: { env: { clipboard: mockClipboard } },
       './utils/validations': { validateResource: validateResourceStub },
+      './utils/platformUtils': { getSafeSizesOption: getSafeSizesOptionStub },
     });
 
     try {
@@ -111,6 +106,7 @@ suite('generateTree Command Test Suite', function () {
 
     const genTreeStub = proxyquire(pathToGenerateFunctions, {
       './utils/validations': { validateResource: validateResourceStub },
+      './utils/platformUtils': { getSafeSizesOption: getSafeSizesOptionStub },
       'tree-node-cli': treeStub,
     });
 
@@ -133,11 +129,8 @@ suite('generateTree Command Test Suite', function () {
 
     const genTreeStub = proxyquire(pathToGenerateFunctions, {
       'tree-node-cli': treeStub,
-      vscode: {
-        env: {
-          clipboard: mockClipboard,
-        },
-      },
+      vscode: { env: { clipboard: mockClipboard } },
+      './utils/platformUtils': { getSafeSizesOption: getSafeSizesOptionStub },
     });
     existsSyncStub.returns(true);
 
@@ -169,6 +162,7 @@ suite('generateTree Command Test Suite', function () {
       mockConfig.get.calledWith('ascii', true),
       'get() should be called with key "ascii" and default value true'
     );
+    assert(getSafeSizesOptionStub.calledOnce, 'getSafeSizesOption should not be called');
     assert(
       treeStub.calledWithMatch('/valid/path', {
         allFiles: false,
@@ -187,6 +181,7 @@ suite('generateTree Command Test Suite', function () {
     const genTreeStub = proxyquire(pathToGenerateFunctions, {
       'tree-node-cli': treeStub,
       './utils/validations': { validateResource: validateResourceStub },
+      './utils/platformUtils': { getSafeSizesOption: getSafeSizesOptionStub },
       vscode: { env: { clipboard: mockClipboard } },
     });
 
@@ -208,6 +203,7 @@ suite('generateTree Command Test Suite', function () {
     const genTreeStub = proxyquire(pathToGenerateFunctions, {
       'tree-node-cli': treeStub,
       './utils/validations': { validateResource: validateResourceStub },
+      './utils/platformUtils': { getSafeSizesOption: getSafeSizesOptionStub },
     });
 
     await genTreeStub.generateTree(mockedUriResource);
