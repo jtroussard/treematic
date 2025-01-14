@@ -9,6 +9,9 @@ const { convertToRegex } = require('./utils/conversions');
 const { getSafeSizesOption } = require('./utils/platformUtils');
 
 function generateTreeEverything(resource) {
+  if (os === 'win32') {
+    throw new Error('checking to see is my windows run will catch this');
+  }
   console.debug('generateTreeEverything method invoked...');
   try {
     const normalizedPath = validateResource(resource);
