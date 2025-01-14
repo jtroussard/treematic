@@ -22,7 +22,7 @@ jobs:
       - name: Install Xvfb Equivalent (Headless GUI) - Skipped
         run: echo "XVFB not required on Windows"
 
-      - name: Run Coverage Check
+      - name: Run Tests and Coverage Report
         run: npm run test:ci
 
       - name: Upload Test Results
