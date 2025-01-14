@@ -27,7 +27,7 @@ jobs:
         env:
           DISPLAY: ':99'
 
-      - name: Run Coverage Check
+      - name: Run Tests and Coverage Report
         run: npm run test:ci
         env:
           DISPLAY: ':99'
