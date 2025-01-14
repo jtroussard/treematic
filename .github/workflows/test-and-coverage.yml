@@ -5,6 +5,7 @@ on:
     branches: [main, workflow-testing]
   pull_request:
     branches: [main, workflow-testing]
+  workflow_dispatch:
 
 jobs:
   test-and-coverage:
