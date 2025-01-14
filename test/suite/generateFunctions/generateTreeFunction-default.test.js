@@ -162,7 +162,7 @@ suite('generateTree Command Test Suite', function () {
       mockConfig.get.calledWith('ascii', true),
       'get() should be called with key "ascii" and default value true'
     );
-    assert(getSafeSizesOptionStub.calledOnce, 'getSafeSizesOption should not be called');
+    assert(getSafeSizesOptionStub.calledOnce, 'getSafeSizesOption should have be called');
     assert(
       treeStub.calledWithMatch('/valid/path', {
         allFiles: false,
