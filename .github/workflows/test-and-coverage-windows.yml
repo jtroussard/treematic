@@ -1,0 +1,40 @@
+name: Test and Coverage Windows
+
+on:
+  pull_request:
+    branches: [release, main, wip]
+  workflow_dispatch:
+
+jobs:
+  test-coverage-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Install Xvfb Equivalent (Headless GUI) - Skipped
+        run: echo "XVFB not required on Windows"
+
+      - name: Run Coverage Check
+        run: npm run test:ci
+
+      - name: Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: ./test-results
+
+      - name: Upload Coverage Report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: ./coverage

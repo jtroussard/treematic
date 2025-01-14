@@ -1,8 +1,7 @@
 name: Dry Run Publish
 
 on:
-  pull_request:
-    branches: [workflow-testing]
+  workflow_dispatch:
 
 jobs:
   dry-run-publish:
