@@ -1,6 +1,6 @@
 # Treematic
 
-**Version:** 2.0.3
+**Version:** 2.0.4
 
 ## Summary
 
@@ -46,6 +46,8 @@ my-project
 2. **Generate Tree Everything**: Right-click on any directory in the Explorer and choose "Generate Tree Everything" from the context menu. This action generates a comprehensive tree representation, including all directories and files, and copies it to your clipboard.
 
 **NOTE** The 'everything' command excludes the contents of `.git/` directory for performance reasons.
+**NOTE** File sizes option for Windows OS has been temporarily disabled due to third party dependency issues.
+
 
 ## Example Use Cases
 
@@ -137,25 +139,20 @@ Treematic provides several configuration options to customize its behavior. Thes
   - **Default**: `false`
   - **Description**: Enables ASCII line graphics for the tree representation, replacing the default Unicode-based tree lines.
 
-<!-- ## Known Issues -->
+## Known Issues
+
+- **Sizes Option on Windows:** 
+    - Currently, the `sizes` option is disabled on Windows due to limitations in packaging the required `du.exe` dependency. 
+    - We are actively working on a solution to re-enable this feature in future releases.
 
 ## Release Notes
 
-### 2.0.0
+### 2.0.4
 
-- **Major Update**: Complete overhaul of configuration management with expanded settings for customization.
-- **New Features**:
-  - Default tree generator command now supports configuration options.
-  - Reworked/named (`Generate Tree Everything`) with hard-coded configurations to not exclude any files or directories ( _NOTE_ For now the .git/ dir contents are ignored for performance reasons).
-  - Enhanced control through new settings such as `maxDepth`, `dirsOnly`, and `reverse`.
-- **Improvements**:
-  - Updated default command to respect user-defined configurations in `settings.json`.
-  - Clearer documentation and expanded use case examples.
-  - Optimized the extension for better performance and usability.
-  - Full test coverage (unit tests)
-- **Bug Fixes**:
-  - Resolved issues with hidden file handling and Windows path compatibility in earlier versions.
-  - Resolved Regex pattern matching for Windows path by normalizing all path strings into UNIX format.
+**Release Notes:**
+
+* The `sizes` option is now automatically disabled on Windows platforms.
+* Windows compatibility has been improved.
 
 _See_ [`CHANGELOG.md`](CHANGELOG.md) _for historical release details._
 

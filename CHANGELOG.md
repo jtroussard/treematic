@@ -8,6 +8,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
+## [2.0.4] - 2025-01-20
+
+### Fixed
+
+- Windows compatibility issue with the `sizes` option.
+
+### Added
+
+- Windows machine tests to CI/CD workflow.
+
+### Improved
+
+- Workflow step names and documentation.
+
+### Added
+
+- `package` script command.
+
+
 ## [2.0.3] - 2025-01-13
 
 ### Fixed
