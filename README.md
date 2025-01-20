@@ -45,7 +45,7 @@ my-project
 
 2. **Generate Tree Everything**: Right-click on any directory in the Explorer and choose "Generate Tree Everything" from the context menu. This action generates a comprehensive tree representation, including all directories and files, and copies it to your clipboard.
 
-**NOTE** The 'everything' command excludes the contents of `.git/` directory for performance reasons.
+**NOTE** The 'everything' command excludes the contents of `.git/` directory for performance reasons.  
 **NOTE** File sizes option for Windows OS has been temporarily disabled due to third party dependency issues.
 
 
