@@ -156,6 +156,7 @@
     "minor": "node ./scripts/version-calculate.js minor | xargs -I {} node ./scripts/version-bump.js {} && npm i",
     "major": "node ./scripts/version-calculate.js major | xargs -I {} node ./scripts/version-bump.js {} && npm i",
     "publish": "vsce publish",
+    "package": "vsce package",
     "lint": "prettier --write .",
     "lint:check": "prettier --check ."
   },
