@@ -2,7 +2,10 @@ name: Test and Coverage Ubuntu
 
 on:
   pull_request:
-    branches: [release, main, wip]
+    types: [opened, synchronize, reopened, edited, ready_for_review]
+    branches: ['main', 'release', 'wip', 'release/**']
+  push:
+    branches: ['main', 'release', 'release/**']
   workflow_dispatch:
 
 jobs:
@@ -34,14 +37,14 @@ jobs:
 
       - name: Upload Test Results
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-results
           path: ./test-results
 
       - name: Upload Coverage Report
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-report
           path: ./coverage
