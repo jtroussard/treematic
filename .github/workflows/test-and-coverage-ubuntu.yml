@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [release, main, wip]
   push:
-    branches: [release] # I am hoping this will make it easier to rerun check on dependabot rebases
+    branches: [dependabot] # I am hoping this will make it easier to rerun check on dependabot rebases
   workflow_dispatch:
 
 jobs:
