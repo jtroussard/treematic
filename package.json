@@ -147,6 +147,7 @@
     "build-dev": "rm -rf dist && esbuild ./src/extension.js --bundle --outfile=dist/extension.js --platform=node --target=node14 --external:vscode --sourcemap",
     "debug-build": "webpack --display-error-details",
     "test": "node ./test/runTest.js",
+    "test:snapshot": "TEST_FILE=generateTreeFunction-snapShots.test.js npm run test",
     "test:ci": "npm run coverage",
     "coverage": "c8 --check-coverage --check-coverage --lines 80 --functions 80 --branches 75 --reporter=html --reporter=text npm run test",
     "coverage:stress": "c8 --check-coverage --check-coverage --lines 100 --functions 100 --branches 100 --reporter=html --reporter=text npm run test",
@@ -176,7 +177,7 @@
     "vscode": "^1.1.37"
   },
   "dependencies": {
-    "@vscode/vsce": "3.2.1",
+    "@vscode/vsce": "3.6.0",
     "c8": "^10.1.2",
     "child_process": "1.0.2",
     "path-browserify": "1.0.1",
