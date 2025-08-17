@@ -2,9 +2,10 @@ name: Test and Coverage Ubuntu
 
 on:
   pull_request:
-    branches: [release, main, wip]
+    types: [opened, synchronize, reopened, edited, ready_for_review]
+    branches: ['main', 'release', 'wip', 'release/**']
   push:
-    branches: [dependabot] # I am hoping this will make it easier to rerun check on dependabot rebases
+    branches: ['main', 'release', 'release/**']
   workflow_dispatch:
 
 jobs:
