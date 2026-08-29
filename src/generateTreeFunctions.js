@@ -7,8 +7,9 @@ const os = require('os').platform();
 const { validateResource } = require('./utils/validations');
 const { convertToRegex } = require('./utils/conversions');
 const { getSafeSizesOption } = require('./utils/platformUtils');
+const { handleTreeOutput } = require('./outputHandler');
 
-function generateTreeEverything(resource) {
+async function generateTreeEverything(resource) {
   console.debug('generateTreeEverything method invoked...');
   try {
     const normalizedPath = validateResource(resource);
@@ -18,7 +19,7 @@ function generateTreeEverything(resource) {
       throw error;
     }
 
-    let treeOutput = tree(normalizedPath, {
+    const treeOutput = tree(normalizedPath, {
       allFiles: true,
       dirsFirst: false,
       dirsOnly: false,
@@ -30,17 +31,23 @@ function generateTreeEverything(resource) {
       ascii: false,
     });
 
-    vscode.env.clipboard.writeText(treeOutput);
-    vscode.window.showInformationMessage('Generated tree copied to clipboard!');
+    await handleTreeOutput(treeOutput);
+    
     console.debug('Tree generatred successfully!');
     return;
   } catch (e) {
+    if (e?.message === 'Canceled' || e?.name === 'Canceled') {
+      console.debug(
+        'Operation was intentionally canceled by the user or system.'
+      );
+      return;
+    }
     vscode.window.showErrorMessage(`Something went wrong: ${e.message}`);
     console.error('Error generating tree:', e);
   }
 }
 
-function generateTree(resource) {
+async function generateTree(resource) {
   console.debug('generateTree method invoked...');
   try {
     const normalizedPath = validateResource(resource);
@@ -69,12 +76,17 @@ function generateTree(resource) {
       ascii: config.get('ascii', true),
     };
 
-    treeOutput = tree(normalizedPath, treeOptions);
-    vscode.env.clipboard.writeText(treeOutput);
-    vscode.window.showInformationMessage('Generated tree copied to clipboard!');
+    const treeOutput = tree(normalizedPath, treeOptions);
+    await handleTreeOutput(treeOutput);
     console.debug('Tree generated successfully!');
     return;
   } catch (e) {
+    if (e?.message === 'Canceled' || e?.name === 'Canceled') {
+      console.debug(
+        'Operation was intentionally canceled by the user or system.'
+      );
+      return;
+    }
     vscode.window.showErrorMessage(`Something went wrong: ${e.message}`);
     console.error('Error generating tree:', e);
     return;
